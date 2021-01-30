@@ -70,6 +70,7 @@ function fillHead(){
 
     for(const element of primValues) {
         const tColumn = document.createElement('th');
+        tColumn.classList.add("px-4");
         tColumn.innerHTML = element;
         tRow.appendChild(tColumn);        
     }
@@ -118,12 +119,12 @@ function buildCards(){
 
         for (i=0; i<5;i++) {
             const cardRow = container.insertRow();
+
             for(j=0; j<6; j++) {
                 const cardCol = cardRow.insertCell();
+                // cardCol.classList.add("mx-auto");
             }
         }
-        // container.innerHTML = `
-        // container.rows[1].cells[1].innerHTML = "etst";
     return container;
 }
 
@@ -144,23 +145,21 @@ function fillCards (cards, element){
     cards.rows[1].cells[5].innerHTML = element[secValue[10]];
 
     cards.rows[2].cells[0].innerHTML = secValue[11];
-    cards.rows[2].cells[1].innerHTML = `${element[secValue[11]]} ${element[secValue[6]]}` ;
+    cards.rows[2].cells[1].innerHTML = `${element[secValue[11]]} ${element[secValue[7]]}` ;
     cards.rows[2].cells[2].innerHTML = secValue[16];
     cards.rows[2].cells[3].innerHTML = element[secValue[16]];
     cards.rows[2].cells[4].innerHTML = secValue[14];
     cards.rows[2].cells[5].innerHTML = element[secValue[14]];
 
     cards.rows[3].cells[0].innerHTML = secValue[12];
-    cards.rows[3].cells[1].innerHTML = `${element[secValue[12]]} ${element[secValue[6]]}` ;
+    cards.rows[3].cells[1].innerHTML = `${element[secValue[12]]} ${element[secValue[7]]}` ;
     cards.rows[3].cells[2].innerHTML = secValue[15];
     cards.rows[3].cells[3].innerHTML = element[secValue[15]];
 
     cards.rows[3].cells[0].innerHTML = secValue[9];
-    cards.rows[3].cells[1].innerHTML = `${element[secValue[9]]} ${element[secValue[6]]}` ;
+    cards.rows[3].cells[1].innerHTML = `${element[secValue[9]]} ${element[secValue[7]]}` ;
     cards.rows[3].cells[2].innerHTML = secValue[13];
     cards.rows[3].cells[3].innerHTML = element[secValue[13]];
-
-
 
     return cards;
 }
