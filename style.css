@@ -1,0 +1,28 @@
+
+.hideClass{
+    display: none;
+}
+
+.secondData {
+    height:100%;
+    background-color: #efffff;
+    transition: height 1s;
+    box-shadow: 3px 7px 12px -1px rgba(0,0,0,0.62);
+}   
+.primData{
+    background-color: #efefef;
+    font-weight: 600;
+    box-shadow: 3px 7px 12px -1px rgba(0,0,0,0.62);
+}
+.nested{
+    font-size: 0.8em;
+
+}
+.nested:nth-child(odd){
+    font-weight: 600;
+    text-align: right;
+
+}
+.bold{
+    font-weight: 600;
+}
