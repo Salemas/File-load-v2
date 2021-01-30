@@ -20,15 +20,16 @@ const primValues =[
     "Pirstatymo eilutės data "
 ];
 const secValue = [
-    "Pristatymo būklė",
     "Prekės aprašymas",
+    "Gavėjo pavadinimas",
+    "LT -Standartinė Pateikimo trukmė -  (kal. dien.)",
+    "Pristatymo būklė",
     "Kaina",
     "Valiuta",
     "už",
     "Mato vnt.",
     "Dok. valiuta",
     "Kiekis sandėlyje",
-    "LT -Standartinė Pateikimo trukmė -  (kal. dien.)",
     "Kritinės prekės žyma",
     "Min. užsakymo kiekis - MOQ",
     "Min. pristatymo  kiekis - MDQ",
@@ -36,9 +37,9 @@ const secValue = [
     "Elgerta Darbuotojas",
     "Galutinio kliento kodas",
     "Galutinis klientas",
-    "Gavėjo kodas",
-    "Gavėjo pavadinimas"
+    "Gavėjo kodas"
 ]
+ 
 
 const table1 = document.getElementById('table1');
 fillHead();
@@ -92,11 +93,12 @@ function fillTable(data){
             const rowT2 = tBody.insertRow(); //to main table insertin row for nested table
             rowT2.classList.add("hideClass");
             const columnT2 = rowT2.insertCell(); 
-            columnT2.colSpan = "16";
+            columnT2.colSpan = "15";
             
-            const card = buildCards(element);
+            const card = buildCards();
+            const filledCards = fillCards(card,element);
             
-            columnT2.appendChild(card); // into main table row inserting nested table
+            columnT2.appendChild(filledCards); // into main table row inserting nested table
             columnT2.classList.add("secondData");
             
             
@@ -109,72 +111,56 @@ function fillTable(data){
     });
 }
 
-function buildCards(element){
-    const container = document.createElement('div');
-    container.classList.add("columns");
+function buildCards(){
 
-    container.innerHTML = `
-    <div class="column">
-        <div class="content">
-            <span class="bold is-half">${secValue[1]}:</span>
-            <span class="is-half">${element[secValue[1]]}</span>
-        </div>
-        <div class="content">
-            <span class="bold">${secValue[2]}:</span>
-            <span>${element[secValue[2]]} ${element[secValue[3]]} / ${element[secValue[4]]} ${element[secValue[5]]}</span>
-        </div>  
-        <div class="content">
-            <span class="bold">${secValue[10]}:</span>
-            <span>${element[secValue[10]]}</span>
-        </div>  
-        <div class="content">
-            <span class="bold">${secValue[11]}:</span>
-            <span>${element[secValue[11]]}</span>
-        </div>  
-        <div class="content">
-            <span class="bold">${secValue[7]}:</span>
-            <span>${element[secValue[7]]}</span>
-        </div>  
-    </div>
-    <div class="column">
-        <div class="content">
-            <span class="bold">${secValue[17]}:</span>
-            <span>${element[secValue[17]]}</span>
-        </div>
-        <div class="content">
-            <span class="bold">${secValue[16]}:</span>
-            <span>${element[secValue[16]]}</span>
-        </div>  
-        <div class="content">
-            <span class="bold">${secValue[15]}:</span>
-            <span>${element[secValue[15]]}</span>
-        </div>  
-        <div class="content">
-            <span class="bold">${secValue[14]}:</span>
-            <span>${element[secValue[14]]}</span>
-        </div>  
-        <div class="content">
-            <span class="bold">${secValue[12]}:</span>
-            <span>${element[secValue[12]]}</span>
-        </div>  
-    </div>
-    <div class="column">
-        <div class="content">
-            <span class="bold">${secValue[8]}:</span>
-            <span>${element[secValue[8]]}</span>
-        </div>
-        <div class="content">
-            <span class="bold">${secValue[9]}:</span>
-            <span>${element[secValue[9]]}</span>
-        </div>
-        <div class="content">
-            <span class="bold">${secValue[13]}:</span>
-            <span>${element[secValue[13]]}</span>
-        </div>  
-    </div>
-    `
+    const container = document.createElement('table');
+    // container.classList.add("columns");
 
-
-
+        for (i=0; i<5;i++) {
+            const cardRow = container.insertRow();
+            for(j=0; j<6; j++) {
+                const cardCol = cardRow.insertCell();
+            }
+        }
+        // container.innerHTML = `
+        // container.rows[1].cells[1].innerHTML = "etst";
     return container;
+}
+
+function fillCards (cards, element){
+
+    cards.rows[0].cells[0].innerHTML = secValue[0];
+    cards.rows[0].cells[1].innerHTML = element[secValue[0]];
+    cards.rows[0].cells[2].innerHTML = secValue[1];
+    cards.rows[0].cells[3].innerHTML = element[secValue[1]];
+    cards.rows[0].cells[4].innerHTML = secValue[2];
+    cards.rows[0].cells[5].innerHTML = element[secValue[2]];
+
+    cards.rows[1].cells[0].innerHTML = secValue[4];
+    cards.rows[1].cells[1].innerHTML = `${element[secValue[4]]} ${element[secValue[5]]} / ${element[secValue[6]]} ${element[secValue[7]]}` ;
+    cards.rows[1].cells[2].innerHTML = secValue[17];
+    cards.rows[1].cells[3].innerHTML = element[secValue[17]];
+    cards.rows[1].cells[4].innerHTML = secValue[10];
+    cards.rows[1].cells[5].innerHTML = element[secValue[10]];
+
+    cards.rows[2].cells[0].innerHTML = secValue[11];
+    cards.rows[2].cells[1].innerHTML = `${element[secValue[11]]} ${element[secValue[6]]}` ;
+    cards.rows[2].cells[2].innerHTML = secValue[16];
+    cards.rows[2].cells[3].innerHTML = element[secValue[16]];
+    cards.rows[2].cells[4].innerHTML = secValue[14];
+    cards.rows[2].cells[5].innerHTML = element[secValue[14]];
+
+    cards.rows[3].cells[0].innerHTML = secValue[12];
+    cards.rows[3].cells[1].innerHTML = `${element[secValue[12]]} ${element[secValue[6]]}` ;
+    cards.rows[3].cells[2].innerHTML = secValue[15];
+    cards.rows[3].cells[3].innerHTML = element[secValue[15]];
+
+    cards.rows[3].cells[0].innerHTML = secValue[9];
+    cards.rows[3].cells[1].innerHTML = `${element[secValue[9]]} ${element[secValue[6]]}` ;
+    cards.rows[3].cells[2].innerHTML = secValue[13];
+    cards.rows[3].cells[3].innerHTML = element[secValue[13]];
+
+
+
+    return cards;
 }
