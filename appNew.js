@@ -105,28 +105,7 @@ function fillTable(data){
                 
                 bColumn.innerHTML = element[value];    //inserting value in cell
             }
-                        
-
-            // for(const value of secValue){ // poppulating nested table with secondaty data
-                
-            //     let dataValue = element[value];
-
-            //     let columnNested = rowNested.insertCell();
-            //     columnNested.innerHTML = value;
-            //     columnNested.classList.add("nested");
-                
-            //     columnNested = rowNested.insertCell();
-            //     columnNested.innerHTML = dataValue;
-            //     columnNested.classList.add("nested");
-
-
-            //     counter ++;
-            //     if(counter >= 5) //creating pairs of colums (5 pairs)
-            //     {
-            //         rowNested=table2.insertRow();
-            //         counter = 0;
-            //     }
-            // }
+         
     });
 }
 
@@ -134,17 +113,11 @@ function buildCards(element){
     const container = document.createElement('div');
     container.classList.add("columns");
 
-    // for (let index = 0; index < 3; index++) {
-    //     const element = document.createElement("div");
-    //     element.classList.add("column");
-    //     container.appendChild(element);        
-    // }
-    // html
     container.innerHTML = `
     <div class="column">
         <div class="content">
-            <span class="bold">${secValue[1]}:</span>
-            <span>${element[secValue[1]]}</span>
+            <span class="bold is-half">${secValue[1]}:</span>
+            <span class="is-half">${element[secValue[1]]}</span>
         </div>
         <div class="content">
             <span class="bold">${secValue[2]}:</span>
